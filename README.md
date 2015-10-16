@@ -7,6 +7,7 @@ A simple [gotty](https://github.com/yudai/gotty) image based on [dit4c/centos-no
 
 ## Usage
 
+Get an interactive shell:
 ```
-docker run -ti --rm -p 8080:8080 dit4c/gotty /bin/bash
+docker run -ti --rm -p 8080:8080 dit4c/gotty:centos-notroot
 ```
