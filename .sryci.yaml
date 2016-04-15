@@ -1,0 +1,4 @@
+build:
+  image: registry.shurenyun.com/gliderlabs_alpine
+  commands:
+    - echo 'done'
