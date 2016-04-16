@@ -1,6 +1,6 @@
-FROM alpine:3.2
+FROM alpine:3.3
 
-RUN echo http://mirrors.ustc.edu.cn/alpine/v3.2/main/ >> /etc/apk/repositories
+RUN echo http://mirrors.ustc.edu.cn/alpine/v3.3/main/ >> /etc/apk/repositories
 
 RUN apk add --update go git && \
   mkdir -p /tmp/gotty && \
