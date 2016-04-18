@@ -6,7 +6,8 @@ RUN echo 'deb http://mirrors.163.com/debian/ jessie main non-free contrib' >> /e
 echo 'deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib' >> /etc/apt/sources.list  && \
 echo 'deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib' >> /etc/apt/sources.list
 
-RUN apt-get update && apt-get -y dist-upgrade golang git && \
+RUN apt-get update && apt-get -y dist-upgrade &&
+apt-get install -y golang git && \
 mkdir -p /tmp/gotty && \
 GOPATH=/tmp/gotty go get github.com/yudai/gotty && \
 mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
