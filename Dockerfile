@@ -1,12 +1,17 @@
-#FROM alpine:3.3
-FROM index.alauda.cn/library/golang:latest
+FROM debian:8.1
+MAINTAINER @abdul <abdul.qabiz@gmail.com>
 
-#RUN echo http://mirrors.ustc.edu.cn/alpine/v3.3/main/ >> /etc/apk/repositories
+RUN apt-get update && apt-get -y dist-upgrade
+RUN apt-get install -y golang git
 
-RUN GOPATH=/go go get github.com/xiaods/gotty && \
-mv /go/bin/gotty /usr/local/bin/ && \
-apt-get clean
+ENV GOPATH /usr/go
+RUN mkdir $GOPATH
+ENV PATH $GOPATH/bin:$PATH
 
-ENTRYPOINT ["/usr/local/bin/gotty"]
-CMD ["--permit-write","--reconnect","/bin/sh"]
-EXPOSE 8080
+RUN go get github.com/yudai/gotty
+
+# Install whatever program you want to run through gotty:
+# RUN apt-get install -y bsdgames
+# ENV PATH /usr/games/:$PATH
+
+ENTRYPOINT ["gotty"]
