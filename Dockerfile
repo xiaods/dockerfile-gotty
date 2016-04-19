@@ -3,10 +3,8 @@ FROM index.alauda.cn/library/golang:latest
 
 #RUN echo http://mirrors.ustc.edu.cn/alpine/v3.3/main/ >> /etc/apk/repositories
 
-RUN mkdir -p /tmp/gotty && \
-GOPATH=/tmp/gotty go get github.com/xiaods/gotty && \
-mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
-rm -rf /tmp/gotty && \
+RUN GOPATH=/go go get github.com/xiaods/gotty && \
+mv /go/bin/gotty /usr/local/bin/ && \
 apt-get clean
 
 ENTRYPOINT ["/usr/local/bin/gotty"]
